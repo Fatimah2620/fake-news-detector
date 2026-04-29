@@ -1,7 +1,7 @@
 #Import Library
 import pandas as pd
 
-# Upload Data
+# Load datasets (Fake & Real news)
 fake = pd.read_csv("Fake.csv")
 true = pd.read_csv("True.csv")
 
@@ -20,7 +20,7 @@ X = data["text"]
 y = data["label"]
 
 # -------------------------
-# Convert Text to Number
+# Convert text into numerical features using TF-IDF
 # -------------------------
 from sklearn.feature_extraction.text import TfidfVectorizer
 
@@ -28,7 +28,7 @@ vectorizer = TfidfVectorizer(stop_words='english')
 X = vectorizer.fit_transform(X)
 
 # -------------------------
-# Siplit Data
+# Split dataset into training and testing sets
 # -------------------------
 from sklearn.model_selection import train_test_split
 
@@ -37,7 +37,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 # -------------------------
-# Training The model
+# Train Logistic Regression model
 # -------------------------
 from sklearn.linear_model import LogisticRegression
 
